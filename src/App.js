@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Navigate, Route, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import UserProfile from './components/UserProfile';
@@ -16,7 +16,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={isAuthenticated ? <Home /> : <Login authenticate={authenticate} />} />
+      <Route path="/login" element={isAuthenticated ? <Home /> : <Login authenticate={authenticate} />} />
+      <Route path="/" element={<Navigate replace to="/login" />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/userprofile" element={<UserProfile />} />
       <Route path="/home" element={<Home />} />
