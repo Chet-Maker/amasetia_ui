@@ -31,11 +31,8 @@ function Signup() {
             const data = await response.json();
     
             if (response.ok) {
-                // Signup was successful
-                console.log('Signup successful', data);
-                // You can redirect the user or clear the form, handle as needed
+                window.location.href = '/userprofile'
             } else {
-                // Signup failed
                 alert(data.error || 'An error occurred during signup.');
             }
         } catch (error) {
@@ -64,7 +61,7 @@ function Signup() {
                 className="input-field"
             />
             <input
-                type="confirmPassword"
+                type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm Password"

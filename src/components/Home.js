@@ -3,7 +3,7 @@ import React from 'react';
 function Home() {
     return (
         <div>
-            Welcome to the amasetia.
+            Welcome to the app.
         </div>
     );
 }
