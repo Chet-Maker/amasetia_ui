@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Component.css';
 
 function Signup() {
     const [username, setUsername] = useState('');
@@ -45,38 +46,46 @@ function Signup() {
 
 
     return (
-        <div>
+        <div className="signup-container"> 
+            <h1 className="title">Amasetia</h1>
+            <p className="subtitle">Join us today.</p>
             <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Username"
+                className="input-field"
             />
             <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
+                className="input-field"
             />
             <input
-                type="password"
+                type="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm Password"
+                className="input-field"
             />
             <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
+                className="input-field"
             />
             <input
-                type="birth_date"
+                type="date"
                 value={birthDate}
                 onChange={(e) => setBirthDate(e.target.value)}
-                placeholder="Birth Date"
+                placeholder="Birth Date (MM-DD-YYYY)"
+                className="input-field"
             />
-            <button onClick={handleSignup}>Sign Up</button>
+            <button onClick={handleSignup} className="login-button">Sign Up</button>
+            <p className="signup-link">Already have an account? <a href="/login">Login here</a></p>
         </div>
     );
 }
