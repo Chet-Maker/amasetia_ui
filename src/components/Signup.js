@@ -44,8 +44,8 @@ function Signup() {
 
     return (
         <div className="signup-container"> 
-            <h1 className="title">Amasetia</h1>
-            <p className="subtitle">Join us today.</p>
+            <h1 className="title text">Insight Companion</h1>
+            <p className="subtitle text">Join us today.</p>
             <input
                 type="text"
                 value={username}
@@ -81,8 +81,8 @@ function Signup() {
                 placeholder="Birth Date (MM-DD-YYYY)"
                 className="input-field"
             />
-            <button onClick={handleSignup} className="login-button">Sign Up</button>
-            <p className="signup-link">Already have an account? <a href="/login">Login here</a></p>
+            <button onClick={handleSignup} className="login-button text">Sign Up</button>
+            <p className="signup-link text">Already have an account? <a href="/login">Login here</a></p>
         </div>
     );
 }

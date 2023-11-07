@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import UserProfile from './components/UserProfile';
 import Home from './components/Home';
+import Banner from './components/Banner';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -15,13 +16,17 @@ function App() {
   };
 
   return (
-    <Routes>
-      <Route path="/login" element={isAuthenticated ? <Home /> : <Login authenticate={authenticate} />} />
-      <Route path="/" element={<Navigate replace to="/login" />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/userprofile" element={<UserProfile />} />
-      <Route path="/home" element={<Home />} />
-    </Routes>
+    <>
+      <Banner /> {/* Include the banner at the top of your application */}
+      <Routes>
+        <Route path="/login" element={isAuthenticated ? <Home /> : <Login authenticate={authenticate} />} />
+        <Route path="/" element={<Navigate replace to="/login" />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/home" element={<Home />} />
+        {/* ... other routes */}
+      </Routes>
+    </>
   );
 }
 

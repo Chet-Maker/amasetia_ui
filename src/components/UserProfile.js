@@ -57,12 +57,12 @@ function UserProfile() {
 
     return (
         <div className="profile-container">
-            <div className="title">Enter Your Scores</div>
-            <p>If you know your values for the Meyers-Briggs assessment, input your individual values given to you as a percent. If you have not taken the test, please do so <a href="https://www.16personalities.com/free-personality-test" target="_blank" rel="noopener noreferrer">here</a>.</p>
+            <div className="title text">Enter Your Scores</div>
+            <p className="text">If you know your values for the Meyers-Briggs assessment, input your individual values given to you as a percent. If you have not taken the test, please do so <a href="https://www.16personalities.com/free-personality-test" target="_blank" rel="noopener noreferrer">here</a>.</p>
             {error && <p className="error-message">{error}</p>}
-            <div className='trait-container'>
+            <div className='traits-container'>
             <div className="trait-pair">
-             <div className="trait-heading">Extraversion vs Introversion</div>
+             <div className="trait-heading text">Extraversion vs Introversion</div>
             <input
                 className="input-field"
                 type="number"
@@ -71,14 +71,14 @@ function UserProfile() {
                 placeholder="Extraversion"
             />
             <input
-                className="input-field"
+                className="input-field text"
                 type="number"
                 value={introversion}
                 onChange={(e) => validateInput(setIntroversion, extraversion, e.target.value)}
                 placeholder="Introversion"
             /> 
             </div>
-            <div className="trait-pair">
+            <div className="trait-pair text">
             <div className="trait-heading">Sensing vs Intuition</div>
             <input
                 className="input-field"
@@ -95,7 +95,7 @@ function UserProfile() {
                 placeholder="Intuition"
             />
             </div>
-            <div className="trait-pair">
+            <div className="trait-pair text">
             <div className="trait-heading">Thinking vs Feeling</div>
             <input
                 className="input-field"
@@ -112,7 +112,7 @@ function UserProfile() {
                 placeholder="Feeling"
             />
             </div>
-            <div className="trait-pair">
+            <div className="trait-pair text">
             <div className="trait-heading">Judging vs Perceiving</div>
             <input
                 className="input-field"

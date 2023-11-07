@@ -28,8 +28,8 @@ function Login() {
 
     return (
         <div className="login-container">
-            <h1 className="title">Insight Companion</h1>
-            <p className="subtitle">Please sign in</p>
+            <h1 className="title text">Insight Companion</h1>
+            <p className="subtitle text">Please sign in</p>
             <input
                 type="text"
                 value={username}
