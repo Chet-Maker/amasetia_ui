@@ -21,9 +21,16 @@ html, body {
     font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
+.error-message.text {
+    color: red;
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+}
+
 .title {
     font-size: 3em;
     margin-bottom: 0.5em;
+    font-weight: bold;
 }
 
 .subtitle {
@@ -88,25 +95,69 @@ html, body {
     margin-bottom: 20px; /* Space below the title */
 }
 
+.userprofile-title {
+    margin-top: 40px;
+}
+
+.trait-section {
+    height: 50%;
+    /* padding-top: 100px; */
+    /* justify-content: space-between; */
+    /* Add any additional styling required for alignment and spacing */
+  }
+
 .traits-container {
     width: 100%; /* Full width of the profile-container */
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns for larger screens */
-    gap: 20px; /* Space between grid items */
+    gap: 10px; /* Space between grid items */
 }
 
 .trait-pair {
     display: flex; /* Use flexbox within each trait pair */
     flex-direction: column; /* Stack children vertically */
     align-items: center; /* Center children horizontally */
-    margin-bottom: 3em;
+    margin-bottom: 1em;
     margin-top: 3em;
+    border-radius: 10px;
 }
 
 .input-field {
     width: 40%; /* Make input fields take up most of the trait pair width */
     margin-bottom: 20px; /* Space below each input field */
 }
+
+.trait-pair.extraversion-introversion {
+    background-color: #ffe5e5; /* light red */
+    margin-top: 10px;
+  }
+  
+  .trait-pair.sensing-intuition {
+    background-color: #f2e5ff; /* very light purple */
+    margin-top: 10px;
+  }
+  
+  .trait-pair.thinking-feeling {
+    background-color: #e5ffe5; /* very light green */
+    margin-top: 10px;
+  }
+  
+  .trait-pair.judging-perceiving {
+    background-color: #ffffe5; /* very light yellow */
+    margin-top: 10px;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Adjust as needed */
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    height: auto; /* Adjust as needed */
+  }
 
 .submit-button {
     width: 10%;
@@ -126,6 +177,7 @@ html, body {
 }
 
 .trait-heading {
+    margin-top: 30px;
     margin-bottom: 15px;
     font-weight: bold;
 }
@@ -175,6 +227,35 @@ html, body {
   .navigation a:hover {
     color: #000; /* Change color on hover */
   }
+
+  navigation li a {
+  position: relative; /* This allows the pseudo-element to be positioned relative to the link */
+  display: inline-block; /* Ensures the pseudo-element aligns correctly */
+  padding: 10px; /* Adjust the padding to fit your design */
+  text-decoration: none; /* Optional: removes underline from links */
+  color: #000; /* Adjust the text color as needed */
+}
+
+.navigation li a::before {
+  content: '';
+  position: absolute;
+  width: 0; /* Start with a width of 0 */
+  height: 3px; /* Height of the hover line */
+  background-color: #6969f6; /* Color of the hover line */
+  top: 0; /* Position at the top of the link */
+  left: 50%;
+  transform: translateX(-50%); /* Centers the line */
+  transition: width 0.3s ease; /* Transition for the hover effect */
+}
+
+.navigation li a:hover::before {
+  width: 100%; /* Full width on hover */
+}
+
+/* Ensure the text does not move */
+.navigation li {
+  margin-top: 2px; /* This compensates for the 2px line, adjust if your line height is different */
+}
   
   /* Responsive adjustments */
   @media (max-width: 768px) {
