@@ -11,9 +11,20 @@ function UserProfile() {
     const [feeling, setFeeling] = useState('');
     const [judging, setJudging] = useState('');
     const [perceiving, setPerceiving] = useState('');
+    const [error, setError] = useState('');
+
+    const validateInput = (setter, opposingValue, value) => {
+        const numValue = parseInt(value, 10);
+        if (opposingValue !== "" && numValue + parseInt(opposingValue, 10) !== 100 || numValue > 100) {
+            setter(value);
+            setError('The sum of each trait pair must equal 100 and neither can be greater than 100.');
+        } else {
+            setError('');
+            setter(value); 
+        }
+    };
 
     const handleProfileSubmit = async () => {
-        // Replace '/api/userprofile' with the correct endpoint for your API
         try {
             const response = await fetch('/api/userprofile', {
                 method: 'POST',
@@ -34,10 +45,8 @@ function UserProfile() {
 
             const data = await response.json();
             if (response.ok) {
-                // Handle successful submission, e.g., notify user or redirect
                 window.location.href = '/home'
             } else {
-                // Handle errors, e.g., display a message to the user
                 alert(data.error || 'An error occurred while updating the profile.');
             }
         } catch (error) {
@@ -46,67 +55,82 @@ function UserProfile() {
         }
     };
 
-    // The form inputs are given the 'input-field' class for styling
     return (
-        <div className="login-container">
+        <div className="profile-container">
             <div className="title">Enter Your Scores</div>
+            <p>If you know your values for the Meyers-Briggs assessment, input your individual values given to you as a percent. If you have not taken the test, please do so <a href="https://www.16personalities.com/free-personality-test" target="_blank" rel="noopener noreferrer">here</a>.</p>
+            {error && <p className="error-message">{error}</p>}
+            <div className='trait-container'>
+            <div className="trait-pair">
+             <div className="trait-heading">Extraversion vs Introversion</div>
             <input
                 className="input-field"
                 type="number"
                 value={extraversion}
-                onChange={(e) => setExtraversion(e.target.value)}
+                onChange={(e) => validateInput(setExtraversion, introversion, e.target.value)}
                 placeholder="Extraversion"
             />
             <input
                 className="input-field"
                 type="number"
                 value={introversion}
-                onChange={(e) => setIntroversion(e.target.value)}
+                onChange={(e) => validateInput(setIntroversion, extraversion, e.target.value)}
                 placeholder="Introversion"
             /> 
+            </div>
+            <div className="trait-pair">
+            <div className="trait-heading">Sensing vs Intuition</div>
             <input
                 className="input-field"
                 type="number"
                 value={sensing}
-                onChange={(e) => setSensing(e.target.value)}
+                onChange={(e) => validateInput(setSensing, intuition, e.target.value)}
                 placeholder="Sensing"
             />
             <input
                 className="input-field"
                 type="number"
                 value={intuition}
-                onChange={(e) => setIntuition(e.target.value)}
+                onChange={(e) => validateInput(setIntuition, sensing, e.target.value)}
                 placeholder="Intuition"
             />
+            </div>
+            <div className="trait-pair">
+            <div className="trait-heading">Thinking vs Feeling</div>
             <input
                 className="input-field"
                 type="number"
                 value={thinking}
-                onChange={(e) => setThinking(e.target.value)}
+                onChange={(e) => validateInput(setThinking, feeling, e.target.value)}
                 placeholder="Thinking"
             />
             <input
                 className="input-field"
                 type="number"
                 value={feeling}
-                onChange={(e) => setFeeling(e.target.value)}
+                onChange={(e) => validateInput(setFeeling, thinking, e.target.value)}
                 placeholder="Feeling"
             />
+            </div>
+            <div className="trait-pair">
+            <div className="trait-heading">Judging vs Perceiving</div>
             <input
                 className="input-field"
                 type="number"
                 value={judging}
-                onChange={(e) => setJudging(e.target.value)}
+                onChange={(e) => validateInput(setJudging, perceiving, e.target.value)}
                 placeholder="Judging"
             />
             <input
                 className="input-field"
                 type="number"
                 value={perceiving}
-                onChange={(e) => setPerceiving(e.target.value)}
+                onChange={(e) => validateInput(setPerceiving, judging, e.target.value)}
                 placeholder="Perceiving"
             />
-            <button className="login-button" onClick={handleProfileSubmit}>Submit</button>
+            </div>
+            </div>
+            <button className="submit-button" onClick={handleProfileSubmit} disabled={!!error}>Submit</button>
         </div>
     );
 }

@@ -36,6 +36,11 @@
     cursor: pointer;
 }
 
+.login-button:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+  }
+
 .login-button:hover {
     background-color: #005f5f;
 }
@@ -53,3 +58,58 @@
     height: 100vh;
     background-color: white;
 }
+
+.profile-container {
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+    min-height: 100vh; /* Full height of the viewport */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.title {
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.traits-container {
+    width: 100%; /* Full width of the profile-container */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for larger screens */
+    gap: 20px; /* Space between grid items */
+}
+
+.trait-pair {
+    display: flex; /* Use flexbox within each trait pair */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+}
+
+.input-field {
+    width: 90%; /* Make input fields take up most of the trait pair width */
+    margin-bottom: 10px; /* Space below each input field */
+}
+
+.submit-button {
+    margin-top: 20px; /* Space above the button */
+}
+
+.submit-button:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
+.trait-heading {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .traits-container {
+        grid-template-columns: 1fr; /* Stack the trait pairs on smaller screens */
+    }
+}
+
+
